@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+
+@font-face {
+    font-family: 'GoogleSans';
+    src: url('./assets/fonts/GoogleSans/GoogleSans-Regular-v1.27.ttf') format ('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@layer base {
+    html {
+        @apply text-white;
+        @apply bg-IWDBackground;
+    }
+    body {
+        @apply bg-IWDBackground;
+        background: linear-gradient(135deg, #0f0a1a 0%, #1a0a2e 50%, #0f0a1a 100%);
+        min-height: 100vh;
+    }
+    h1 {
+        @apply text-4xl;
+        @apply font-semibold;
+        @apply my-2;
+    }
+    h2 {
+        @apply text-3xl;
+        @apply font-semibold;
+        @apply my-2;
+    }
+    h3 {
+        @apply text-2xl;
+        @apply my-2;
+    }
+    a {
+        @apply hover:text-IWDLightPurple transition-colors;
+    }
+    p {
+        @apply my-5;
+    }
+    /* IWD theme accent styles */
+    .iwd-accent {
+        @apply border-2 border-IWDPurple rounded-lg;
+        box-shadow: 3px 3px 0px 0px rgba(124, 58, 237, 0.5);
+    }
+    .iwd-card {
+        @apply bg-IWDCard border-2 border-IWDPurple rounded-lg p-6;
+        box-shadow: 4px 4px 0px 0px rgba(124, 58, 237, 0.3);
+    }
+    /* New Styles for the Session Component */
+    .session-component {
+        @apply bg-gray-100;   /* Slight gray background */
+        @apply border border-gray-300;   /* Border for the component */
+        @apply shadow-lg;    /* Shadow to make it stand out */
+        @apply rounded-md;   /* Rounded corners for a smoother look */
+    }
+    .iframe-component {
+        @apply h-[800px]; /* This sets the height to 800 pixels */
+    }
+    .store-logo {
+        height: 60px; /* or any other fixed height */
+        width: auto; /* maintain the aspect ratio */
+        object-fit: contain; /* ensure the image is scaled correctly */
+    }
+    .talk-pill {
+        @apply px-5;        /* Increase horizontal padding */
+        @apply py-2;        /* Vertical padding */
+        @apply bg-IWDPurple; /* Background color */
+        @apply text-white;  /* Text color */
+        @apply font-semibold; /* Font weight */
+        @apply rounded-full;  /* Full border radius for pill shape */
+        @apply shadow;        /* Slight shadow for depth */
+        @apply hover:bg-IWDDeepPurple;  /* Darker shade on hover */
+        @apply transition-all;    /* Smooth transition for hover effect */
+    }
+    .workshop-pill {
+        @apply px-5;
+        /* Increase horizontal padding */
+        @apply py-2;
+        /* Vertical padding */
+        @apply bg-IWDViolet;
+        /* Background color */
+        @apply text-white;
+        /* Text color */
+        @apply font-semibold;
+        /* Font weight */
+        @apply rounded-full;
+        /* Full border radius for pill shape */
+        @apply shadow;
+        /* Slight shadow for depth */
+        @apply hover:bg-IWDDeepPurple;
+        /* Darker shade on hover */
+        @apply transition-all;
+        /* Smooth transition for hover effect */
+    }
+}
+
+@tailwind utilities;
