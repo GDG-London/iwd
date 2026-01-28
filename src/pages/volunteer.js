@@ -10,10 +10,10 @@ const Volunteer = () => (
         </p>
 
         <div className='flex flex-wrap justify-center items-center my-10'>
-            {/* Embed the Google Form using an iframe */}
+            {/* Embed the IWD London Form using an iframe */}
             <iframe
-                title='Google Volunteer Form'
-                src="https://docs.google.com/forms/d/e/1FAIpQLSfr24_oWj7LjKdoLuuNc575OYbbXP4nkX6VwbEP55kqUEJRTg/viewform"
+                title='IWD London Volunteer Form'
+                src="https://forms.gle/CvnSJFKVR7tjYhfk7"
                 width="640"
                 height="1561"
                 frameBorder="0"

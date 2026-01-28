@@ -20,6 +20,9 @@ const Navbar = () => (
             <li>
                 <Link to='/location' className='text-black hover:text-IWDViolet font-semibold transition-colors'>Location</Link>
             </li>
+            <li>
+                <Link to='/volunteer' className='text-black hover:text-IWDViolet font-semibold transition-colors'>Volunteer</Link>
+            </li>
             {/*<li>*/}
             {/*    <Link to='/sponsors' className='text-white'>Sponsors</Link> */}
             {/*</li>*/}

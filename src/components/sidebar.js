@@ -61,7 +61,7 @@ const Sidebar = () => {
                     {/*<li className='my-5'><NavLink onClick={() => handleCloseMenu()} to='/app' className='text-white'>Download App</NavLink></li>*/}
                     {/* 
                     <li className='my-5'><NavLink onClick={() => handleCloseMenu()} to='/code-of-conduct' className='text-white my-2 block'>Code of Conduct</NavLink></li> */}
-                    {/*<li className='my-5'><NavLink onClick={() => handleCloseMenu()} to='/volunteer' className='text-white my-2 block'>Volunteer</NavLink></li>*/}
+                   <li className='my-5'><NavLink onClick={() => handleCloseMenu()} to='/volunteer' className='text-white my-2 block'>Volunteer</NavLink></li>
                 </ul>
             </div>
         </Menu>

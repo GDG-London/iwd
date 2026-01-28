@@ -9,7 +9,7 @@ import Schedule from './pages/schedule.js'
 import Location from './pages/location.js'
 import Policy from './pages/code-conduct-policy.js';
 // import FAQ from './pages/faq.js';
-// import Volunteer from './pages/volunteer.js';
+import Volunteer from './pages/volunteer.js';
 // import PhotoAlbum from './pages/photo-album.js'
 import ScrollToTop from "./components/scrolltotop.js";
 import SessionDetails from "./components/sessions";
@@ -36,8 +36,9 @@ function App() {
                 {/* 
                 <Route path="/faq" element={<FAQ />} /> 
                 <Route path='/photos' element={<PhotoAlbum/>} />
-                <Route path="/volunteer" element={<Volunteer />} />
+                
                  */}
+                 <Route path="/volunteer" element={<Volunteer />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />   
               </Routes>
             </ScrollToTop>
