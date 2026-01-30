@@ -2,13 +2,6 @@ import React from 'react';
 import imperialImage from '../assets/imperial-college.jpg';
 
 const LocationSection = () => {
-    // Venue images from environment variables
-    const venueImages = [
-        process.env.REACT_APP_VENUE_IMAGE_1,
-        process.env.REACT_APP_VENUE_IMAGE_2,
-        process.env.REACT_APP_VENUE_IMAGE_3
-    ].filter(Boolean); // Remove undefined values
-
     return (
         <section className='bg-gradient-to-br from-IWDDeepPurple via-IWDPurple to-IWDViolet text-white py-20 my-20 rounded-2xl relative overflow-hidden'>
             {/* Decorative background */}
