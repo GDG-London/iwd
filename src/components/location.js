@@ -56,7 +56,7 @@ const LocationSection = () => {
                         </p>
 
                         <p className='text-lg'>
-                            If you are using WHAT3WORDS, you can use <a href="https://w3w.co/film.jump.stir" className="text-IWDLightPurple hover:text-white underline">///FILM.JUMP.STIR</a>
+                            If you are using WHAT3WORDS, you can use <a href="https://w3w.co/film.jump.stir" className="text-IWDLightPurple hover:text-white underline">{"///FILM.JUMP.STIR"}</a>
                         </p>
 
                         {(process.env.REACT_APP_VENUE_TRANSPORT || !process.env.REACT_APP_VENUE_TRANSPORT) && (
