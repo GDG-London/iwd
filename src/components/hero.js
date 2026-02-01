@@ -1,5 +1,5 @@
 import React from 'react';
-import bannerImage from '../assets/Devfest_London_2025_Banner.png';
+import bannerImage from '../assets/Devfest_London_2026_Banner.png';
 import TicketButton from './ticket-button';
 import Banner from './banner';
 
@@ -28,7 +28,7 @@ const Hero = () => (
                 <span className="text-white px-4 py-2 rounded-full border-2 border-IWDPurple font-bold text-lg bg-IWDDeepPurple">2026</span>
             </div>
             <h3 className='text-IWDLightPurple font-semibold text-xl my-3'>{process.env.REACT_APP_EVENT_DATE || '14th March 2026'}</h3>
-            <p className='sm:px-5 sm:text-lg text-IWDText my-2'>{process.env.REACT_APP_EVENT_DESCRIPTION || 'We\'re excited to announce that International Women\'s Day (IWD) 2026 London by GDG London will take place at Blackett Laboratory, Imperial College London. Join us for a community-run one-day conference aimed to bring technologists, developers, students, tech companies, and speakers together in one location to learn, discuss and experiment with technology.'}</p>
+            <p className='sm:px-5 sm:text-lg text-IWDText my-2'>{process.env.REACT_APP_EVENT_DESCRIPTION || 'We\'re excited to announce that International Women\'s Day (IWD) 2026 London, hosted by GDG London, will take place at Blackett Laboratory, Imperial College London. IWD London is a community-run, one-day conference open to everyone — welcoming women, men, and people of all gender identities as attendees, speakers, panellists, and contributors. Our goal is to bring together technologists, developers, students, tech companies, and community leaders in one place to learn, share, discuss, and experiment with technology, while amplifying diverse voices and perspectives across the tech ecosystem.'}</p>
             <p className='sm:px-5 sm:text-lg text-IWDText my-2'>More info about the speakers is coming soon!</p>
 
             <div className='mt-4'>
