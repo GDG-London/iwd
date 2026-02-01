@@ -8,15 +8,15 @@ const Navbar = () => (
             {/*<li>*/}
             {/*    <Link to="/" className='text-white'>Home</Link> */}
             {/*</li>*/}
-            <li>
+          {/*   <li>
                 <Link to='/schedule' className='text-black hover:text-IWDPurple font-semibold transition-colors'>Schedule</Link>
-            </li>
+            </li> */}
             <li>
                 <Link to="/speakers" className='text-black hover:text-IWDPurple font-semibold transition-colors'>Speakers</Link>
             </li>
-            <li>
+           {/*  <li>
                 <Link to='/sessions' className='text-black hover:text-IWDPurple font-semibold transition-colors'>Sessions</Link>
-            </li>
+            </li> */}
             <li>
                 <Link to='/location' className='text-black hover:text-IWDViolet font-semibold transition-colors'>Location</Link>
             </li>
