@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/Devfest_London_2025.png';
+import logo from '../assets/GDGLondon_Logo.png';
 import HamburgerMenu from './hamburger.js';
 import Navbar from './navbar.js';
 import TicketButton from './ticket-button';
