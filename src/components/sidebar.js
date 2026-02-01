@@ -55,7 +55,7 @@ const Sidebar = () => {
                     <li /*  */className='my-5'><NavLink onClick={() => handleCloseMenu()} to='/schedule' className='text-white'>Schedule</NavLink></li>
                      <li className='my-5'><NavLink onClick={() => handleCloseMenu()} to="/speakers" className='text-white'>Speakers</NavLink> </li>
                      <li className='my-5'><NavLink onClick={() => handleCloseMenu()} to='/sessions' classNa/*  */me='text-white'>Sessions</NavLink> </li>
-                    <li className='my-5 text-white'><a href={process.env.REACT_APP_REGISTRATION_URL || "https://www.eventbrite.com/e/iwd-london-2026-tickets"}>Register</a></li>
+                    <li className='my-5 text-white'><a href={process.env.REACT_APP_REGISTRATION_URL || "https://www.eventbrite.co.uk/e/international-womens-day-2026-by-gdg-london-tickets-1981892162810"}>Register</a></li>
                     <li className='my-5'><NavLink onClick={() => handleCloseMenu()} to='/location' className='text-white my-2 flex-row'>Location</NavLink> </li>
                     {/*<li className='my-5'><NavLink onClick={() => handleCloseMenu()} to='/sponsors' className='text-white'>Sponsors</NavLink> </li>*/}
                     {/*<li className='my-5'><NavLink onClick={() => handleCloseMenu()} to='/app' className='text-white'>Download App</NavLink></li>*/}
