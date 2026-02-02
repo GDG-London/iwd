@@ -37,12 +37,12 @@ const SpeakerProfiles = () => {
                             return (
                                 <div
                                     key={speaker.id}
-                                    className='bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 border border-gray-100 hover:border-DFBlue hover:scale-105'
+                                    className='bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 border border-gray-100 hover:border-IWDPurple hover:scale-105'
                                 >
                                     {/* Profile Picture with Gradient Background */}
                                     <div className="relative mb-6 mx-auto" style={{ width: '180px', height: '180px' }}>
                                         {/* Gradient Background Circle */}
-                                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-DFBlue via-DFGreen to-DFTeal"></div>
+                                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-IWDPurple via-IWDMagenta to-IWDPink"></div>
 
                                         {/* Profile Picture */}
                                         <div className="relative rounded-full w-40 h-40 mx-auto mt-4 border-4 border-white shadow-lg overflow-hidden">
@@ -67,7 +67,7 @@ const SpeakerProfiles = () => {
                                                 href={linkedInLink.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className='text-DFBlue hover:text-DFGreen text-sm font-semibold flex items-center gap-1 transition-colors'
+                                                className='text-IWDPurple hover:text-IWDMagenta text-sm font-semibold flex items-center gap-1 transition-colors'
                                                 aria-label="LinkedIn"
                                             >
                                                 <FaLinkedin className="text-xl" />

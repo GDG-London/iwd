@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/GDGLondon_Logo.png';
+import logo from '../assets/GDGLndon_Lodo_wide.png';
 import HamburgerMenu from './hamburger.js';
 import Navbar from './navbar.js';
 import TicketButton from './ticket-button';
@@ -11,7 +11,7 @@ const Header = () => (
         <nav className='flex justify-between items-center w-11/12 mx-auto py-3'>
             <div className='w-64'>
                 <a href="/">
-                    <img src={logo} className=" h-13 sm:h-20 p-4 sm:p-0"  width="600px" alt="IWD Logo" />
+                    <img src={logo} className="h-10 sm:h-14" alt="GDG London Logo" />
                 </a>
             </div>
             <div>

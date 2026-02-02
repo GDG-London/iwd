@@ -15,6 +15,7 @@ import ScrollToTop from "./components/scrolltotop.js";
 import SessionDetails from "./components/sessions";
 import PrivacyPolicy from './pages/privacy-policy.js';
 import MobileApp from  './pages/app.js';
+import Hackathon from './pages/hackathon.js';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/sponsors" element={<Sponsors />} />
                 <Route path="/app" element={<MobileApp />} />
                 <Route path="/schedule" element={<Schedule />} />
+                <Route path="/hackathon" element={<Hackathon />} />
 
                 {/* 
                 <Route path="/faq" element={<FAQ />} /> 

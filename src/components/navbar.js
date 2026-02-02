@@ -30,6 +30,9 @@ const Navbar = () => (
             {/*    <Link to='/app' className='text-white'>Download App</Link>*/}
             {/*</li> */}
             {/* */}
+            {/* <li>
+                <Link to='/hackathon' className='text-black hover:text-IWDMagenta font-semibold transition-colors'>Hackathon</Link>
+            </li> */}
             <li>
                 <Link to='/code-of-conduct' className='text-black hover:text-IWDPurple font-semibold transition-colors'>Code of Conduct</Link>
             </li>
