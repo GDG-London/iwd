@@ -62,7 +62,7 @@ Edit your `.env` file with these key settings:
 
 ```env
 # Event Information
-REACT_APP_EVENT_NAME=International Women's Day London 2026
+REACT_APP_EVENT_NAME=Build with AI - International Women's Day 2026
 REACT_APP_EVENT_DATE=14th March 2026
 REACT_APP_EVENT_CITY=London
 REACT_APP_EVENT_TAGLINE=Celebrating women in technology

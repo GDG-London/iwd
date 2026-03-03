@@ -23,7 +23,7 @@ npm start
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `REACT_APP_EVENT_NAME` | Full event name | `International Women's Day London 2026` |
+| `REACT_APP_EVENT_NAME` | Full event name | `Build with AI - International Women's Day 2026` |
 | `REACT_APP_EVENT_DATE` | Display date | `14th March 2026` |
 | `REACT_APP_EVENT_YEAR` | Year only | `2026` |
 | `REACT_APP_EVENT_CITY` | City name | `London` |
@@ -32,7 +32,7 @@ npm start
 
 **Example:**
 ```env
-REACT_APP_EVENT_NAME=International Women's Day London 2026
+REACT_APP_EVENT_NAME=Build with AI - International Women's Day 2026
 REACT_APP_EVENT_DATE=14th March 2026
 REACT_APP_EVENT_YEAR=2026
 REACT_APP_EVENT_CITY=London
@@ -192,7 +192,7 @@ const EventBanner = () => (
 # ===================
 # EVENT INFORMATION
 # ===================
-REACT_APP_EVENT_NAME=International Women's Day London 2026
+REACT_APP_EVENT_NAME=Build with AI - International Women's Day 2026
 REACT_APP_EVENT_DATE=14th March 2026
 REACT_APP_EVENT_YEAR=2026
 REACT_APP_EVENT_CITY=London

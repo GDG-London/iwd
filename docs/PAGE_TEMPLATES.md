@@ -395,7 +395,7 @@ Update Event schema in `public/index.html` for search engines:
 <script type="application/ld+json">
 {
   "@type": "Event",
-  "name": "International Women's Day London 2026",
+  "name": "Build with AI - International Women's Day 2026",
   ...
 }
 </script>
