@@ -10,10 +10,10 @@ const Banner = () => {
       </div>
       <div className="w-11/12 mx-auto text-center relative z-10">
         <h1 className="text-3xl sm:text-4xl font-bold mb-2">
-          {process.env.REACT_APP_EVENT_NAME || 'International Women\'s Day London 2026'}
+          {process.env.REACT_APP_EVENT_NAME || 'Build with AI · IWD · 2026 · GDG London'}
         </h1>
         <p className="text-lg sm:text-xl opacity-95">
-          {process.env.REACT_APP_EVENT_TAGLINE || 'Celebrating women in technology'}
+          {process.env.REACT_APP_EVENT_TAGLINE || 'Empowering Voices. Building the Future with AI'}
         </p>
         <div className="flex justify-center items-center gap-6 mt-4 text-sm sm:text-base flex-wrap">
           <span className="flex items-center gap-2">

@@ -10,8 +10,8 @@ const About = () => (
                 </div>
             </div>
             <div>
-                <h2 className='my-4'>About IWD</h2>
-                <p className='my-2 sm:my-4 sm:px-10 sm:text-xl'>IWD are Google-sponsored software developer conferences that allow the local software development community to come together to network and learn about the coolest new technology out there.</p>
+                <h2 className='my-4'>About Build with AI · IWD</h2>
+                <p className='my-2 sm:my-4 sm:px-10 sm:text-xl'>Build with AI are community-led technical workshops and hackathons hosted by GDGs and GDG on Campus. Our goal is to introduce the latest Google AI technologies and models—including Gemini, Vertex AI, AI Studio, and Antigravity—while bringing the local software development community together to network and learn. IWD 2026 by GDG London celebrates empowering voices and building the future with AI. <span className="font-semibold text-IWDPurple">#BuildwithAI</span></p>
                 <div className='my-4 p-2'>
                     <a href='https://developers.google.com/community/devfest' className='text-white bg-Yellow500 hover:text-white rounded-full text-md px-6 py-4 '>Learn More</a>
                 </div>

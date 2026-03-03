@@ -1,30 +1,21 @@
 import React from 'react';
 
 const Volunteer = () => (
-    <div>
-        <h1 className='text-center my-10'>Volunteer Form</h1>
-
-        {/* Invitation message for filling out the form */}
-        <p className='text-center'>
-            Please fill this form if you want to become a volunteer.
-        </p>
-
-        <div className='flex flex-wrap justify-center items-center my-10'>
-            {/* Embed the IWD London Form using an iframe */}
-            <iframe
-                title='IWD London Volunteer Form'
-                src="https://forms.gle/CvnSJFKVR7tjYhfk7"
-                width="640"
-                height="1561"
-                frameBorder="0"
-                marginHeight="0"
-                marginWidth="0"
-            >
-                Loading…
-            </iframe>
+    <div className="min-h-[60vh] flex items-center justify-center px-4 py-16">
+        <div className="max-w-xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-IWDPurple mb-8 tracking-tight">
+                Volunteer
+            </h1>
+            <div className="bg-gradient-to-br from-IWDPurple/5 via-IWDLightPurple/10 to-IWDViolet/5 border border-IWDPurple/20 rounded-2xl p-10 shadow-lg">
+                <p className="text-lg md:text-xl text-gray-600 mb-6 leading-relaxed">
+                    Volunteer submission is closed for now. Try again next year.
+                </p>
+                <p className="text-lg font-semibold text-IWDPurple">
+                    We would like to have you!
+                </p>
+            </div>
         </div>
     </div>
 );
-
 
 export default Volunteer;

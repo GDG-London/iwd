@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 
 const Schedule = () => {
-    const scheduleApiUrl = process.env.REACT_APP_SESSIONIZE_SCHEDULE_API || 'https://sessionize.com/api/v2/yk5teybx/view/GridSmart';
-    const scheduleEmbedStyle = process.env.REACT_APP_SESSIONIZE_EMBED_STYLE || 'https://sessionize.com/api/v2/yk5teybx/embedstyle';
+    const scheduleApiUrl = process.env.REACT_APP_SESSIONIZE_SCHEDULE_API || 'https://sessionize.com/api/v2/2g40sb2m/view/GridSmart';
+    const scheduleEmbedStyle = process.env.REACT_APP_SESSIONIZE_EMBED_STYLE || 'https://sessionize.com/api/v2/2g40sb2m/embedstyle';
 
     useEffect(() => {
         // Add Sessionize stylesheet to document head
@@ -23,7 +23,7 @@ const Schedule = () => {
         <section className="text-center bg-DFBackground py-16">
             <div className="w-11/12 mx-auto max-w-6xl mb-8">
                 <h2 className="text-4xl font-bold text-black mb-4">Conference Schedule</h2>
-                <p className="text-DFBlue text-lg">View the full conference schedule</p>
+                <p className="text-DFBlue text-lg">Speakers selected and agenda published — view the full Build with AI · IWD 2026 schedule</p>
                 {/* Note: Green colors in the schedule come from Sessionize's default theme.
                     To customize colors, go to your Sessionize dashboard → API/Embed → 
                     Customize colors to match your IWD London theme (blue/green). */}

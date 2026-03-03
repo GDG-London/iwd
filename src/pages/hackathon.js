@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
-import { FaRocket, FaUsers, FaLightbulb, FaTrophy, FaClock, FaCode, FaBrain, FaVideo, FaPalette, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaRocket, FaUsers, FaLightbulb, FaClock, FaCode, FaBrain, FaVideo, FaPalette, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Hackathon = () => {
     const [activeTab, setActiveTab] = useState('overview');
-
-    const prizes = [
-        { place: 'Grand Prize', amount: '$50,000', winners: '1 winner', perks: ['Social promotion', '30-min AI Futures Fund interview'] },
-        { place: 'Second Place', amount: '$20,000', winners: '1 winner', perks: ['Social promotion', '30-min AI Futures Fund interview'] },
-        { place: 'Third Place', amount: '$10,000', winners: '1 winner', perks: ['Social promotion', '30-min AI Futures Fund interview'] },
-        { place: 'Honorable Mentions', amount: '$2,000', winners: '10 winners', perks: ['Social promotion'] },
-    ];
 
     const tracks = [
         { icon: <FaBrain className="text-3xl" />, title: 'The Marathon Agent', description: 'Build autonomous systems for tasks spanning hours or days. Use Thought Signatures and Thinking Levels to maintain continuity.' },
@@ -42,20 +35,16 @@ const Hackathon = () => {
                             🚀 HACKATHON 2026
                         </span>
                         <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
-                            Break the Pattern<br />
+                            Build with AI · IWD<br />
                             <span className="bg-gradient-to-r from-IWDPurple via-IWDMagenta to-IWDPink bg-clip-text text-transparent">
-                                Build with AI
+                                2026 · GDG London
                             </span>
                         </h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-                            Join the Gemini 3 global hackathon. Build next-generation applications with the most capable AI model family to date.
+                            Build with AI are community-led technical workshops and hackathons hosted by GDGs and GDG on Campus. Hackathons are events where people come together for a short, intensive period to solve a specific problem or build a functioning prototype—a &quot;minimum viable product&quot; (MVP)—from scratch. Our goal: introduce the latest Google AI technologies including Gemini, Vertex AI, AI Studio, and Antigravity. <span className="text-IWDMagenta font-semibold">#BuildwithAI</span>
                         </p>
                         
                         <div className="flex flex-wrap justify-center gap-4 mb-12">
-                            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-4">
-                                <div className="text-3xl font-bold text-IWDMagenta">$100,000</div>
-                                <div className="text-gray-400 text-sm">in prizes</div>
-                            </div>
                             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-4">
                                 <div className="text-3xl font-bold text-IWDPurple">28,000+</div>
                                 <div className="text-gray-400 text-sm">participants</div>
@@ -92,7 +81,7 @@ const Hackathon = () => {
             <div className="sticky top-0 z-20 bg-IWDBackground/80 backdrop-blur-lg border-b border-IWDPurple/30">
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="flex overflow-x-auto gap-1 py-2">
-                        {['overview', 'tracks', 'prizes', 'teams', 'submit'].map((tab) => (
+                        {['overview', 'tracks', 'teams', 'submit'].map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
@@ -116,13 +105,14 @@ const Hackathon = () => {
                 {activeTab === 'overview' && (
                     <div className="space-y-12 animate-fadeIn">
                         <div className="bg-gradient-to-br from-IWDDeepPurple/50 to-IWDPurple/30 rounded-2xl p-8 border border-IWDPurple/30">
-                            <h2 className="text-3xl font-bold text-white mb-6">Welcome to the Action Era</h2>
+                            <h2 className="text-3xl font-bold text-white mb-6">What is a Hackathon?</h2>
                             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                                The launch of Gemini 3 signals the start of the <strong className="text-IWDMagenta">Action Era</strong>, 
-                                transitioning from static chat to autonomous agents that plan and execute complex, long-running tasks. 
-                                This isn't about building another chatbot—it's about creating systems that sense, reason, and act.
+                                Hackathons are events where people come together for a short, intensive period to solve a specific problem 
+                                or build a functioning prototype—a <strong className="text-IWDMagenta">&quot;minimum viable product&quot; (MVP)</strong>—from scratch. 
+                                <strong className="text-IWDLightPurple"> Build with AI</strong> are community-led technical workshops and hackathons hosted by GDGs and GDG on Campus, 
+                                designed to introduce the latest Google AI technologies—Gemini, Vertex AI, AI Studio, and Antigravity—and empower you to create something real.
                             </p>
-                            <div className="grid md:grid-cols-3 gap-6">
+                            <div className="grid md:grid-cols-2 gap-6">
                                 <div className="bg-white/5 rounded-xl p-6">
                                     <div className="text-IWDPurple text-2xl mb-3">🎯</div>
                                     <h3 className="text-white font-bold mb-2">Be First</h3>
@@ -132,11 +122,6 @@ const Hackathon = () => {
                                     <div className="text-IWDMagenta text-2xl mb-3">🆕</div>
                                     <h3 className="text-white font-bold mb-2">Build Something New</h3>
                                     <p className="text-gray-400 text-sm">This challenge is strictly for new applications. Level playing field for everyone.</p>
-                                </div>
-                                <div className="bg-white/5 rounded-xl p-6">
-                                    <div className="text-IWDViolet text-2xl mb-3">💰</div>
-                                    <h3 className="text-white font-bold mb-2">Win Big</h3>
-                                    <p className="text-gray-400 text-sm">$100,000 prize pool + interviews with the AI Futures Fund team.</p>
                                 </div>
                             </div>
                         </div>
@@ -196,54 +181,6 @@ const Hackathon = () => {
                                     <div className="text-IWDMagenta mb-4">{track.icon}</div>
                                     <h3 className="text-xl font-bold text-white mb-3">{track.title}</h3>
                                     <p className="text-gray-400">{track.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* Prizes Section */}
-                {activeTab === 'prizes' && (
-                    <div className="space-y-8 animate-fadeIn">
-                        <div className="text-center mb-12">
-                            <h2 className="text-4xl font-bold text-white mb-4">
-                                <FaTrophy className="inline text-yellow-400 mr-3" />
-                                $100,000 in Prizes
-                            </h2>
-                        </div>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {prizes.map((prize, idx) => (
-                                <div 
-                                    key={idx} 
-                                    className={`relative rounded-2xl p-6 border ${
-                                        idx === 0 
-                                            ? 'bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 border-yellow-500/50' 
-                                            : idx === 1 
-                                            ? 'bg-gradient-to-br from-gray-400/20 to-gray-500/10 border-gray-400/50'
-                                            : idx === 2
-                                            ? 'bg-gradient-to-br from-amber-600/20 to-amber-700/10 border-amber-600/50'
-                                            : 'bg-white/5 border-IWDPurple/30'
-                                    }`}
-                                >
-                                    {idx === 0 && (
-                                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold">
-                                            TOP PRIZE
-                                        </div>
-                                    )}
-                                    <div className="text-center">
-                                        <div className={`text-3xl font-black mb-2 ${
-                                            idx === 0 ? 'text-yellow-400' : idx === 1 ? 'text-gray-300' : idx === 2 ? 'text-amber-500' : 'text-IWDPurple'
-                                        }`}>
-                                            {prize.amount}
-                                        </div>
-                                        <div className="text-white font-semibold mb-1">{prize.place}</div>
-                                        <div className="text-gray-500 text-sm mb-4">{prize.winners}</div>
-                                        <div className="space-y-2">
-                                            {prize.perks.map((perk, perkIdx) => (
-                                                <div key={perkIdx} className="text-gray-400 text-xs">✓ {perk}</div>
-                                            ))}
-                                        </div>
-                                    </div>
                                 </div>
                             ))}
                         </div>

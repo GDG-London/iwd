@@ -9,7 +9,7 @@ const SpeakerProfiles = () => {
     const [speakers, setSpeakers] = useState([])
 
     const fetchData = () => {
-        fetch(process.env.REACT_APP_SESSIONIZE_SPEAKERS_API || 'https://sessionize.com/api/v2/jvtd8pme/view/Speakers')
+        fetch(process.env.REACT_APP_SESSIONIZE_SPEAKERS_API || 'https://sessionize.com/api/v2/9bnzxcxp/view/Speakers')
             .then(response => {
                 return response.json()
             })
@@ -26,8 +26,8 @@ const SpeakerProfiles = () => {
     return (
         <section className="text-center py-16 bg-white">
             <div className='w-11/12 mx-auto max-w-6xl'>
-                <h2 className="text-4xl font-bold mb-4 text-gray-900">Our Last Year's Speakers</h2>
-                <p className="text-gray-600 text-lg mb-12">Meet our amazing lineup of speakers</p>
+                <h2 className="text-4xl font-bold mb-4 text-gray-900">Our Speakers</h2>
+                <p className="text-gray-600 text-lg mb-12">Speakers selected — meet our amazing lineup for Build with AI · IWD 2026</p>
 
                 {speakers.length > 0 && (
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
