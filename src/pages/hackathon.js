@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaRocket, FaUsers, FaClock, FaCode, FaBrain, FaVideo, FaPalette, FaTicketAlt, FaTrophy } from 'react-icons/fa';
+import { FaRocket, FaUsers, FaCode, FaBrain, FaVideo, FaPalette, FaTicketAlt, FaTrophy } from 'react-icons/fa';
 import PrizeCarousel from '../components/prize-carousel';
 
 const HACKATHON_URL = process.env.REACT_APP_HACKATHON_URL || 'https://buildwithai.gdg.london';
