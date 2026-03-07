@@ -1,8 +1,30 @@
-import React, { useState } from 'react';
-import { FaRocket, FaUsers, FaLightbulb, FaClock, FaCode, FaBrain, FaVideo, FaPalette, FaExternalLinkAlt } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FaRocket, FaUsers, FaClock, FaCode, FaBrain, FaVideo, FaPalette, FaTicketAlt, FaTrophy } from 'react-icons/fa';
+import PrizeCarousel from '../components/prize-carousel';
+
+const HACKATHON_URL = process.env.REACT_APP_HACKATHON_URL || 'https://buildwithai.gdg.london';
+const TARGET_DATE = new Date('2026-03-11T09:00:00Z');
 
 const Hackathon = () => {
     const [activeTab, setActiveTab] = useState('overview');
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+    useEffect(() => {
+        const update = () => {
+            const now = new Date();
+            const diff = Math.max(0, TARGET_DATE.getTime() - now.getTime());
+            setTimeLeft({
+                days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+                minutes: Math.floor((diff / (1000 * 60)) % 60),
+                seconds: Math.floor((diff / 1000) % 60),
+            });
+        };
+        update();
+        const t = setInterval(update, 1000);
+        return () => clearInterval(t);
+    }, []);
 
     const tracks = [
         { icon: <FaBrain className="text-3xl" />, title: 'The Marathon Agent', description: 'Build autonomous systems for tasks spanning hours or days. Use Thought Signatures and Thinking Levels to maintain continuity.' },
@@ -40,38 +62,41 @@ const Hackathon = () => {
                                 2026 · GDG London
                             </span>
                         </h1>
-                        <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-                            Build with AI are community-led technical workshops and hackathons hosted by GDGs and GDG on Campus. Hackathons are events where people come together for a short, intensive period to solve a specific problem or build a functioning prototype—a &quot;minimum viable product&quot; (MVP)—from scratch. Our goal: introduce the latest Google AI technologies including Gemini, Vertex AI, AI Studio, and Antigravity. <span className="text-IWDMagenta font-semibold">#BuildwithAI</span>
+                        <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-4">
+                            Build with AI are community-led technical workshops and hackathons hosted by GDGs and GDG on Campus. Use any AI technology—from open models to cloud APIs—to build something real. Google tools like Gemini and AI Studio are optional.
                         </p>
+                        <p className="text-IWDMagenta font-semibold mb-8">🎉 Prizes are handed out live on event day — be there in person to claim your glory. Show up, win big!</p>
                         
-                        <div className="flex flex-wrap justify-center gap-4 mb-12">
-                            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-4">
-                                <div className="text-3xl font-bold text-IWDPurple">28,000+</div>
-                                <div className="text-gray-400 text-sm">participants</div>
-                            </div>
-                            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-4">
-                                <div className="flex items-center gap-2 text-3xl font-bold text-IWDViolet">
-                                    <FaClock /> Feb 9
+                        <div className="mb-8 max-w-2xl mx-auto">
+                            <PrizeCarousel variant="compact" />
+                        </div>
+
+                        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
+                            {[
+                                { value: timeLeft.days, label: 'DAYS' },
+                                { value: timeLeft.hours, label: 'HOURS' },
+                                { value: timeLeft.minutes, label: 'MINUTES' },
+                                { value: timeLeft.seconds, label: 'SECONDS' },
+                            ].map(({ value, label }) => (
+                                <div key={label} className="bg-white/10 backdrop-blur-sm border border-IWDPurple/40 rounded-xl px-4 sm:px-6 py-4 sm:py-6 text-center min-w-[70px] sm:min-w-[90px]">
+                                    <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tabular-nums">
+                                        {String(value).padStart(2, '0')}
+                                    </div>
+                                    <div className="text-gray-400 text-xs sm:text-sm mt-1 font-medium uppercase tracking-wider">{label}</div>
                                 </div>
-                                <div className="text-gray-400 text-sm">deadline</div>
+                            ))}
+                            <div className="w-full text-center mt-2">
+                                <div className="text-gray-400 text-sm">Opens 11th March 2026 at 9:00 AM GMT</div>
                             </div>
                         </div>
 
                         <div className="flex flex-wrap justify-center gap-4">
-                            <a 
-                                href="https://gemini3.devpost.com/" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-gradient-to-r from-IWDPurple to-IWDMagenta text-white px-8 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all shadow-lg hover:shadow-IWDPurple/50 hover:scale-105"
-                            >
-                                <FaRocket /> Join Hackathon <FaExternalLinkAlt className="text-sm" />
-                            </a>
-                            <a 
-                                href="#teams" 
+                            <Link 
+                                to="/prizes"
                                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-IWDPurple text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-IWDPurple/20 transition-all"
                             >
-                                <FaUsers /> Find a Team
-                            </a>
+                                <FaTrophy /> View Prizes
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -81,7 +106,7 @@ const Hackathon = () => {
             <div className="sticky top-0 z-20 bg-IWDBackground/80 backdrop-blur-lg border-b border-IWDPurple/30">
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="flex overflow-x-auto gap-1 py-2">
-                        {['overview', 'tracks', 'teams', 'submit'].map((tab) => (
+                        {['overview', 'rules', 'tracks', 'teams'].map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
@@ -104,6 +129,29 @@ const Hackathon = () => {
                 {/* Overview Section */}
                 {activeTab === 'overview' && (
                     <div className="space-y-12 animate-fadeIn">
+                        {/* 2 Ways to Participate */}
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="bg-gradient-to-br from-IWDPurple/30 to-IWDDeepPurple/30 rounded-2xl p-8 border border-IWDPurple/50">
+                                <h3 className="text-xl font-bold text-white mb-3">Create or Join a Project Idea</h3>
+                                <p className="text-gray-400 mb-4">Submit your hackathon project, join a team, or browse the Idea Gallery.</p>
+                                <span className="text-IWDLightPurple text-sm">Opens 11th March 2026 at 9:00 AM GMT</span>
+                            </div>
+                            <div className="bg-gradient-to-br from-IWDMagenta/20 to-IWDPink/10 rounded-2xl p-8 border border-IWDMagenta/50">
+                                <h3 className="text-xl font-bold text-white mb-3">Garden of Forgotten Prompt</h3>
+                                <p className="text-gray-400 mb-4">Join the leaderboard for this adventure. We&apos;ll provide cloud credits and open it on the 11th. Create a project so we can send you credits.</p>
+                                <span className="text-IWDLightPurple text-sm">Opens 11th March 2026 at 9:00 AM GMT</span>
+                            </div>
+                        </div>
+
+                        {/* Ticket requirement */}
+                        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-6 flex items-center gap-4">
+                            <FaTicketAlt className="text-3xl text-amber-400 flex-shrink-0" />
+                            <div>
+                                <h3 className="text-white font-bold mb-1">Event Ticket Required</h3>
+                                <p className="text-gray-400">You need a valid ticket for the event to participate in this hackathon. <a href={process.env.REACT_APP_REGISTRATION_URL || HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="text-IWDMagenta hover:text-IWDPink font-semibold">Get your ticket →</a></p>
+                            </div>
+                        </div>
+
                         <div className="bg-gradient-to-br from-IWDDeepPurple/50 to-IWDPurple/30 rounded-2xl p-8 border border-IWDPurple/30">
                             <h2 className="text-3xl font-bold text-white mb-6">What is a Hackathon?</h2>
                             <p className="text-gray-300 text-lg leading-relaxed mb-6">
@@ -116,7 +164,7 @@ const Hackathon = () => {
                                 <div className="bg-white/5 rounded-xl p-6">
                                     <div className="text-IWDPurple text-2xl mb-3">🎯</div>
                                     <h3 className="text-white font-bold mb-2">Be First</h3>
-                                    <p className="text-gray-400 text-sm">Get hands-on access to the Gemini 3 API before the rest of the world catches up.</p>
+                                    <p className="text-gray-400 text-sm">Get hands-on with the latest AI tools and build something real.</p>
                                 </div>
                                 <div className="bg-white/5 rounded-xl p-6">
                                     <div className="text-IWDMagenta text-2xl mb-3">🆕</div>
@@ -158,6 +206,43 @@ const Hackathon = () => {
                                         <span className="text-gray-300">{req}</span>
                                     </div>
                                 ))}
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Rules Section */}
+                {activeTab === 'rules' && (
+                    <div className="space-y-8 animate-fadeIn">
+                        <div className="bg-gradient-to-br from-IWDDeepPurple/50 to-IWDPurple/30 rounded-2xl p-8 border border-IWDPurple/30">
+                            <h2 className="text-3xl font-bold text-white mb-6">📋 Hackathon Rules</h2>
+                            <div className="space-y-6 text-gray-300">
+                                <div>
+                                    <h3 className="text-white font-semibold mb-2">Eligibility</h3>
+                                    <ul className="list-disc list-inside space-y-1 text-gray-400">
+                                        <li>You must have a valid event ticket to participate</li>
+                                        <li>Open to all attendees of Build with AI - IWD 2026</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-semibold mb-2">Participation</h3>
+                                    <ul className="list-disc list-inside space-y-1 text-gray-400">
+                                        <li>Create or join a project — submit your idea, join a team, or browse the Idea Gallery</li>
+                                        <li>Use any AI technology — open models, cloud APIs, Google Gemini, AI Studio — your choice</li>
+                                        <li>Build a functioning prototype (MVP) from scratch during the event</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-semibold mb-2">Prizes</h3>
+                                    <ul className="list-disc list-inside space-y-1 text-gray-400">
+                                        <li>Prizes are handed out live on event day — you must be present to claim</li>
+                                        <li>No mail, no exceptions — show up to win big!</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-semibold mb-2">Code of Conduct</h3>
+                                    <p className="text-gray-400">All participants must adhere to the event Code of Conduct. Be respectful, inclusive, and collaborative.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -211,14 +296,9 @@ const Hackathon = () => {
                                     <p className="text-gray-400 mb-6">
                                         Have an idea? Start a team and recruit talented developers, designers, and innovators to bring it to life.
                                     </p>
-                                    <a 
-                                        href="https://gemini3.devpost.com/" 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 bg-IWDPurple text-white px-6 py-3 rounded-xl font-semibold hover:bg-IWDDeepPurple transition-all"
-                                    >
-                                        Create Team <FaExternalLinkAlt className="text-sm" />
-                                    </a>
+                                    <span className="inline-flex items-center gap-2 bg-IWDPurple/50 text-gray-400 px-6 py-3 rounded-xl font-semibold cursor-not-allowed">
+                                        Create Team — Opens 11th March
+                                    </span>
                                 </div>
                             </div>
 
@@ -232,14 +312,9 @@ const Hackathon = () => {
                                     <p className="text-gray-400 mb-6">
                                         Looking to contribute? Browse existing teams looking for members with your skills and expertise.
                                     </p>
-                                    <a 
-                                        href="https://gemini3.devpost.com/" 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 bg-IWDMagenta text-white px-6 py-3 rounded-xl font-semibold hover:bg-IWDPink transition-all"
-                                    >
-                                        Find Teams <FaExternalLinkAlt className="text-sm" />
-                                    </a>
+                                    <span className="inline-flex items-center gap-2 bg-IWDMagenta/50 text-gray-400 px-6 py-3 rounded-xl font-semibold cursor-not-allowed">
+                                        Find Teams — Opens 11th March
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -268,59 +343,6 @@ const Hackathon = () => {
                     </div>
                 )}
 
-                {/* Submit Section */}
-                {activeTab === 'submit' && (
-                    <div className="space-y-8 animate-fadeIn">
-                        <div className="text-center mb-12">
-                            <h2 className="text-4xl font-bold text-white mb-4">
-                                <FaLightbulb className="inline text-yellow-400 mr-3" />
-                                Submit Your Idea
-                            </h2>
-                            <p className="text-gray-400 max-w-2xl mx-auto">
-                                Ready to showcase your innovation? Follow these steps to submit your project.
-                            </p>
-                        </div>
-
-                        {/* Submission Steps */}
-                        <div className="space-y-6">
-                            {[
-                                { step: 1, title: 'Register on Devpost', desc: 'Create an account and join the Gemini 3 Hackathon', icon: '📝' },
-                                { step: 2, title: 'Build Your Project', desc: 'Use the Gemini 3 API to create your innovative application', icon: '🔨' },
-                                { step: 3, title: 'Record a Demo', desc: 'Create a ~3 minute video showcasing your project', icon: '🎬' },
-                                { step: 4, title: 'Submit Before Deadline', desc: 'Include all required materials before Feb 9, 2026 @ 5:00pm PST', icon: '🚀' },
-                            ].map((item) => (
-                                <div key={item.step} className="flex items-start gap-6 bg-gradient-to-r from-IWDPurple/20 to-transparent rounded-xl p-6 border-l-4 border-IWDPurple">
-                                    <div className="flex-shrink-0 w-14 h-14 bg-IWDPurple rounded-xl flex items-center justify-center text-2xl">
-                                        {item.icon}
-                                    </div>
-                                    <div>
-                                        <div className="text-IWDLightPurple text-sm font-semibold mb-1">Step {item.step}</div>
-                                        <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                        <p className="text-gray-400">{item.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* CTA */}
-                        <div className="text-center py-12">
-                            <div className="bg-gradient-to-r from-IWDDeepPurple via-IWDPurple to-IWDMagenta rounded-2xl p-12">
-                                <h3 className="text-3xl font-bold text-white mb-4">Ready to Break the Pattern?</h3>
-                                <p className="text-gray-200 mb-8 max-w-xl mx-auto">
-                                    Don't miss your chance to be part of AI history. The deadline is approaching fast!
-                                </p>
-                                <a 
-                                    href="https://gemini3.devpost.com/" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-3 bg-white text-IWDDeepPurple px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:scale-105"
-                                >
-                                    <FaRocket /> Submit Your Project <FaExternalLinkAlt className="text-sm" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                )}
             </div>
 
             {/* Resources Bar */}

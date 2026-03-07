@@ -16,6 +16,7 @@ import SessionDetails from "./components/sessions";
 import PrivacyPolicy from './pages/privacy-policy.js';
 import MobileApp from  './pages/app.js';
 import Hackathon from './pages/hackathon.js';
+import Prizes from './pages/prizes.js';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/app" element={<MobileApp />} />
                 <Route path="/schedule" element={<Schedule />} />
                 <Route path="/hackathon" element={<Hackathon />} />
+                <Route path="/prizes" element={<Prizes />} />
 
                 {/* 
                 <Route path="/faq" element={<FAQ />} /> 

@@ -1,12 +1,11 @@
-
 import React, { useEffect, useState } from 'react';
 import { FaLinkedin } from 'react-icons/fa';
 import BioModal from './modal';
 
-
 const SpeakerProfiles = () => {
-
-    const [speakers, setSpeakers] = useState([])
+    const [speakers, setSpeakers] = useState([]);
+    const [selectedSpeaker, setSelectedSpeaker] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const fetchData = () => {
         fetch(process.env.REACT_APP_SESSIONIZE_SPEAKERS_API || 'https://sessionize.com/api/v2/9bnzxcxp/view/Speakers')
@@ -30,14 +29,18 @@ const SpeakerProfiles = () => {
                 <p className="text-gray-600 text-lg mb-12">Speakers selected — meet our amazing lineup for Build with AI · IWD 2026</p>
 
                 {speakers.length > 0 && (
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+                    <div className='flex flex-wrap justify-center gap-6'>
                         {speakers.map(speaker => {
-                            const linkedInLink = speaker.links.find(link => link.linkType === 'LinkedIn');
+                            const linkedInLink = speaker.links?.find(link => link.linkType === 'LinkedIn');
 
                             return (
                                 <div
                                     key={speaker.id}
-                                    className='bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 border border-gray-100 hover:border-IWDPurple hover:scale-105'
+                                    role="button"
+                                    tabIndex={0}
+                                    onClick={() => { setSelectedSpeaker(speaker); setIsModalOpen(true); }}
+                                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedSpeaker(speaker); setIsModalOpen(true); } }}
+                                    className='bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 border border-gray-100 hover:border-IWDPurple hover:scale-105 w-full sm:w-64 cursor-pointer focus:outline-none focus:ring-2 focus:ring-IWDPurple focus:ring-offset-2'
                                 >
                                     {/* Profile Picture with Gradient Background */}
                                     <div className="relative mb-6 mx-auto" style={{ width: '180px', height: '180px' }}>
@@ -61,7 +64,7 @@ const SpeakerProfiles = () => {
                                     <p className='text-gray-600 text-sm mb-4 min-h-[40px]'>{speaker.tagLine}</p>
 
                                     {/* Links */}
-                                    <div className="flex items-center justify-center gap-4">
+                                    <div className="flex items-center justify-center gap-4" onClick={(e) => e.stopPropagation()}>
                                         {linkedInLink && (
                                             <a
                                                 href={linkedInLink.url}
@@ -71,16 +74,22 @@ const SpeakerProfiles = () => {
                                                 aria-label="LinkedIn"
                                             >
                                                 <FaLinkedin className="text-xl" />
-
                                             </a>
                                         )}
-                                        {/* Read More Button */}
-                                        <BioModal speaker={speaker} />
+                                        <span className="text-IWDPurple hover:text-IWDMagenta text-sm font-semibold">View bio</span>
                                     </div>
                                 </div>
                             );
                         })}
                     </div>
+                )}
+                {selectedSpeaker && (
+                    <BioModal
+                        speaker={selectedSpeaker}
+                        isOpen={isModalOpen}
+                        onRequestClose={() => setIsModalOpen(false)}
+                        hideTrigger
+                    />
                 )}
             </div>
         </section>
