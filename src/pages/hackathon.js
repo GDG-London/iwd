@@ -1,43 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRocket, FaUsers, FaCode, FaBrain, FaVideo, FaPalette, FaTicketAlt, FaTrophy } from 'react-icons/fa';
 import PrizeCarousel from '../components/prize-carousel';
 
-const HACKATHON_URL = process.env.REACT_APP_HACKATHON_URL || 'https://buildwithai.gdg.london';
-const TARGET_DATE = new Date('2026-03-11T09:00:00Z');
+const HACKATHON_URL = process.env.REACT_APP_HACKATHON_URL || 'https://gdg-london-hackathon.vercel.app/hackathon';
+const TICKET_URL = process.env.REACT_APP_REGISTRATION_URL || 'https://buildwithai.gdg.london';
 
 const Hackathon = () => {
     const [activeTab, setActiveTab] = useState('overview');
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-    useEffect(() => {
-        const update = () => {
-            const now = new Date();
-            const diff = Math.max(0, TARGET_DATE.getTime() - now.getTime());
-            setTimeLeft({
-                days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-                minutes: Math.floor((diff / (1000 * 60)) % 60),
-                seconds: Math.floor((diff / 1000) % 60),
-            });
-        };
-        update();
-        const t = setInterval(update, 1000);
-        return () => clearInterval(t);
-    }, []);
 
     const tracks = [
         { icon: <FaBrain className="text-3xl" />, title: 'The Marathon Agent', description: 'Build autonomous systems for tasks spanning hours or days. Use Thought Signatures and Thinking Levels to maintain continuity.' },
         { icon: <FaCode className="text-3xl" />, title: 'Vibe Engineering', description: 'Leverage Google AI Studio Build tab. Build agents that write AND verify code through autonomous testing loops.' },
         { icon: <FaVideo className="text-3xl" />, title: 'The Real-Time Teacher', description: 'Use the Gemini Live API to synthesize live video and audio for adaptive learning experiences.' },
         { icon: <FaPalette className="text-3xl" />, title: 'Creative Autopilot', description: 'Combine Gemini 3 reasoning with multimodal creation for professional, brand-consistent assets.' },
-    ];
-
-    const requirements = [
-        'Text description (~200 words) detailing Gemini 3 features used',
-        'Public Project Link or AI Studio demo',
-        'Public code repository (if no AI Studio link)',
-        '~3-minute demonstration video',
     ];
 
     return (
@@ -71,26 +47,23 @@ const Hackathon = () => {
                             <PrizeCarousel variant="compact" />
                         </div>
 
-                        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
-                            {[
-                                { value: timeLeft.days, label: 'DAYS' },
-                                { value: timeLeft.hours, label: 'HOURS' },
-                                { value: timeLeft.minutes, label: 'MINUTES' },
-                                { value: timeLeft.seconds, label: 'SECONDS' },
-                            ].map(({ value, label }) => (
-                                <div key={label} className="bg-white/10 backdrop-blur-sm border border-IWDPurple/40 rounded-xl px-4 sm:px-6 py-4 sm:py-6 text-center min-w-[70px] sm:min-w-[90px]">
-                                    <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tabular-nums">
-                                        {String(value).padStart(2, '0')}
-                                    </div>
-                                    <div className="text-gray-400 text-xs sm:text-sm mt-1 font-medium uppercase tracking-wider">{label}</div>
-                                </div>
-                            ))}
-                            <div className="w-full text-center mt-2">
-                                <div className="text-gray-400 text-sm">Opens 11th March 2026 at 9:00 AM GMT</div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-wrap justify-center gap-4">
+                        <div className="flex flex-wrap justify-center gap-4 mb-8">
+                            <a
+                                href={HACKATHON_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-gradient-to-r from-IWDPurple to-IWDMagenta text-white px-8 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all hover:scale-105 shadow-lg"
+                            >
+                                <FaRocket /> Join Hackathon
+                            </a>
+                            <a
+                                href={HACKATHON_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-IWDPurple text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-IWDPurple/20 transition-all"
+                            >
+                                Submit
+                            </a>
                             <Link 
                                 to="/prizes"
                                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-IWDPurple text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-IWDPurple/20 transition-all"
@@ -131,16 +104,16 @@ const Hackathon = () => {
                     <div className="space-y-12 animate-fadeIn">
                         {/* 2 Ways to Participate */}
                         <div className="grid md:grid-cols-2 gap-6">
-                            <div className="bg-gradient-to-br from-IWDPurple/30 to-IWDDeepPurple/30 rounded-2xl p-8 border border-IWDPurple/50">
+                            <a href={HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-br from-IWDPurple/30 to-IWDDeepPurple/30 rounded-2xl p-8 border border-IWDPurple/50 hover:border-IWDMagenta transition-all">
                                 <h3 className="text-xl font-bold text-white mb-3">Create or Join a Project Idea</h3>
                                 <p className="text-gray-400 mb-4">Submit your hackathon project, join a team, or browse the Idea Gallery.</p>
-                                <span className="text-IWDLightPurple text-sm">Opens 11th March 2026 at 9:00 AM GMT</span>
-                            </div>
-                            <div className="bg-gradient-to-br from-IWDMagenta/20 to-IWDPink/10 rounded-2xl p-8 border border-IWDMagenta/50">
+                                <span className="text-IWDLightPurple text-sm font-semibold">Join now →</span>
+                            </a>
+                            <a href={HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-br from-IWDMagenta/20 to-IWDPink/10 rounded-2xl p-8 border border-IWDMagenta/50 hover:border-IWDPink transition-all">
                                 <h3 className="text-xl font-bold text-white mb-3">Garden of Forgotten Prompt</h3>
-                                <p className="text-gray-400 mb-4">Join the leaderboard for this adventure. We&apos;ll provide cloud credits and open it on the 11th. Create a project so we can send you credits.</p>
-                                <span className="text-IWDLightPurple text-sm">Opens 11th March 2026 at 9:00 AM GMT</span>
-                            </div>
+                                <p className="text-gray-400 mb-4">Join the leaderboard for this adventure. We&apos;ll provide cloud credits. Create a project so we can send you credits.</p>
+                                <span className="text-IWDLightPurple text-sm font-semibold">Join now →</span>
+                            </a>
                         </div>
 
                         {/* Ticket requirement */}
@@ -148,7 +121,7 @@ const Hackathon = () => {
                             <FaTicketAlt className="text-3xl text-amber-400 flex-shrink-0" />
                             <div>
                                 <h3 className="text-white font-bold mb-1">Event Ticket Required</h3>
-                                <p className="text-gray-400">You need a valid ticket for the event to participate in this hackathon. <a href={process.env.REACT_APP_REGISTRATION_URL || HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="text-IWDMagenta hover:text-IWDPink font-semibold">Get your ticket →</a></p>
+                                <p className="text-gray-400">You need a valid ticket for the event to participate in this hackathon. <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" className="text-IWDMagenta hover:text-IWDPink font-semibold">Get your ticket at buildwithai.gdg.london →</a></p>
                             </div>
                         </div>
 
@@ -177,14 +150,14 @@ const Hackathon = () => {
                         {/* What NOT to build */}
                         <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-8">
                             <h3 className="text-2xl font-bold text-red-400 mb-4">⚠️ Avoid These Project Types</h3>
-                            <p className="text-gray-300 mb-4">In the Action Era, if a single prompt can solve it, it's not an application.</p>
+                            <p className="text-gray-300 mb-4">In the Action Era, if a single prompt can solve it, it&apos;s not an application.</p>
                             <div className="grid md:grid-cols-2 gap-4">
                                 {[
-                                    'Baseline RAG - Simple data retrieval is now a baseline feature',
-                                    'Prompt-Only Wrappers - System prompts in a basic UI',
-                                    'Simple Vision Analyzers - Basic object identification',
-                                    'Generic Chatbots - Standard bots for nutrition, job screening',
-                                    'Medical Advice - No diagnostic advice projects',
+                                    'Baseline RAG — Simple data retrieval is now a baseline feature',
+                                    'Prompt-Only Wrappers — System prompts in a basic UI',
+                                    'Simple Vision Analyzers — Basic object identification',
+                                    'Generic Chatbots — Standard bots for nutrition, job screening',
+                                    'Medical Advice — No diagnostic advice projects',
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-start gap-3 text-gray-400">
                                         <span className="text-red-400">✕</span>
@@ -196,9 +169,15 @@ const Hackathon = () => {
 
                         {/* Requirements */}
                         <div className="bg-white/5 rounded-2xl p-8 border border-IWDPurple/30">
-                            <h3 className="text-2xl font-bold text-white mb-6">📋 Submission Requirements</h3>
+                            <h3 className="text-2xl font-bold text-white mb-6">📋 What to Submit</h3>
+                            <p className="text-gray-400 mb-6">Each submission must include:</p>
                             <div className="space-y-4">
-                                {requirements.map((req, idx) => (
+                                {[
+                                    'A working project',
+                                    'A demo video (max 3 minutes) — Show the app in action and explain what it does.',
+                                    'Project description — Explain the problem, the idea, and how the solution works.',
+                                    'Code repository link (GitHub or similar). If private, provide read access to the judges.',
+                                ].map((req, idx) => (
                                     <div key={idx} className="flex items-start gap-4 bg-IWDPurple/10 rounded-lg p-4">
                                         <span className="bg-IWDPurple text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">
                                             {idx + 1}
@@ -207,6 +186,7 @@ const Hackathon = () => {
                                     </div>
                                 ))}
                             </div>
+                            <p className="text-gray-500 text-sm mt-4">Optional: Screenshots, design mockups, technical documentation</p>
                         </div>
                     </div>
                 )}
@@ -215,33 +195,100 @@ const Hackathon = () => {
                 {activeTab === 'rules' && (
                     <div className="space-y-8 animate-fadeIn">
                         <div className="bg-gradient-to-br from-IWDDeepPurple/50 to-IWDPurple/30 rounded-2xl p-8 border border-IWDPurple/30">
-                            <h2 className="text-3xl font-bold text-white mb-6">📋 Hackathon Rules</h2>
-                            <div className="space-y-6 text-gray-300">
+                            <h2 className="text-3xl font-bold text-white mb-8">Rules</h2>
+                            <div className="space-y-8 text-gray-300">
+                                {/* Event Ticket Required */}
                                 <div>
-                                    <h3 className="text-white font-semibold mb-2">Eligibility</h3>
+                                    <h3 className="text-xl font-bold text-white mb-3">Event Ticket Required</h3>
+                                    <p className="text-gray-400 mb-3">You need a valid ticket for the event to participate in this hackathon.</p>
+                                    <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" className="text-IWDMagenta hover:text-IWDPink font-semibold">Get your ticket at buildwithai.gdg.london →</a>
+                                </div>
+
+                                {/* Eligibility */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-3">Eligibility</h3>
+                                    <p className="text-gray-400">Event organisers, speakers, and volunteers cannot and will not participate in the hackathon.</p>
+                                </div>
+
+                                {/* Teams */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-3">Teams</h3>
                                     <ul className="list-disc list-inside space-y-1 text-gray-400">
-                                        <li>You must have a valid event ticket to participate</li>
-                                        <li>Open to all attendees of Build with AI - IWD 2026</li>
+                                        <li>Solo builder or Team (max 4 members)</li>
+                                        <li>Create an idea and allow others to join, or join an existing team with approval</li>
                                     </ul>
                                 </div>
+
+                                {/* Create or Join a Project Idea */}
                                 <div>
-                                    <h3 className="text-white font-semibold mb-2">Participation</h3>
-                                    <ul className="list-disc list-inside space-y-1 text-gray-400">
-                                        <li>Create or join a project — submit your idea, join a team, or browse the Idea Gallery</li>
-                                        <li>Use any AI technology — open models, cloud APIs, Google Gemini, AI Studio — your choice</li>
-                                        <li>Build a functioning prototype (MVP) from scratch during the event</li>
+                                    <h3 className="text-xl font-bold text-white mb-3">Create or Join a Project Idea</h3>
+                                    <p className="text-gray-400 mb-3">When registering your idea, you will provide:</p>
+                                    <ul className="list-disc list-inside space-y-1 text-gray-400 mb-3">
+                                        <li>Project Title</li>
+                                        <li>Team Name</li>
+                                        <li>Solo or Group project</li>
+                                        <li>Team members (optional)</li>
+                                        <li>LinkedIn profile</li>
+                                    </ul>
+                                    <p className="text-gray-400 mb-3">You can also browse the Idea Gallery and join an existing project.</p>
+                                    <p className="text-gray-400 mb-3">Or join the adventure &quot;Garden of Forgotten Prompt&quot; — we will provide you cloud credits. Create a project so we can send you credits.</p>
+                                    <a href={HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="text-IWDLightPurple hover:text-IWDPink font-semibold">Join now →</a>
+                                </div>
+
+                                {/* Avoid These Project Types */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-red-400 mb-3">⚠ Avoid These Project Types</h3>
+                                    <p className="text-gray-400 mb-4">In the Action Era, if a single prompt can solve it, it&apos;s not an application.</p>
+                                    <ul className="space-y-2 text-gray-400">
+                                        <li className="flex gap-2"><span className="text-red-400">✕</span> Baseline RAG — Simple data retrieval is now a baseline feature</li>
+                                        <li className="flex gap-2"><span className="text-red-400">✕</span> Prompt-Only Wrappers — System prompts in a basic UI</li>
+                                        <li className="flex gap-2"><span className="text-red-400">✕</span> Simple Vision Analyzers — Basic object identification</li>
+                                        <li className="flex gap-2"><span className="text-red-400">✕</span> Generic Chatbots — Standard bots for nutrition, job screening</li>
+                                        <li className="flex gap-2"><span className="text-red-400">✕</span> Medical Advice — No diagnostic advice projects</li>
                                     </ul>
                                 </div>
+
+                                {/* What to Submit */}
                                 <div>
-                                    <h3 className="text-white font-semibold mb-2">Prizes</h3>
+                                    <h3 className="text-xl font-bold text-white mb-3">What to Submit</h3>
+                                    <p className="text-gray-400 mb-3">Each submission must include:</p>
+                                    <ol className="list-decimal list-inside space-y-2 text-gray-400">
+                                        <li>A working project</li>
+                                        <li>A demo video (max 3 minutes) — Show the app in action and explain what it does.</li>
+                                        <li>Project description — Explain the problem, the idea, and how the solution works.</li>
+                                        <li>Code repository link (GitHub or similar). If private, provide read access to the judges.</li>
+                                    </ol>
+                                    <p className="text-gray-500 text-sm mt-3">Optional: Screenshots, design mockups, technical documentation</p>
+                                </div>
+
+                                {/* Judging Criteria */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-3">Judging Criteria</h3>
                                     <ul className="list-disc list-inside space-y-1 text-gray-400">
-                                        <li>Prizes are handed out live on event day — you must be present to claim</li>
-                                        <li>No mail, no exceptions — show up to win big!</li>
+                                        <li><strong className="text-white">Innovation</strong> — How original or creative is the AI idea?</li>
+                                        <li><strong className="text-white">Technical Execution &amp; User Experience</strong> — Is the solution functional, well built, and easy to use?</li>
+                                        <li><strong className="text-white">Impact</strong> — Does the project solve a real problem or improve user workflows in a meaningful way?</li>
                                     </ul>
                                 </div>
+
+                                {/* Winning Prizes */}
                                 <div>
-                                    <h3 className="text-white font-semibold mb-2">Code of Conduct</h3>
-                                    <p className="text-gray-400">All participants must adhere to the event Code of Conduct. Be respectful, inclusive, and collaborative.</p>
+                                    <h3 className="text-xl font-bold text-white mb-3">Winning Prizes — Important</h3>
+                                    <p className="text-gray-400 mb-3">🎉 Prizes are handed out live on event day — be there in person to claim your glory.</p>
+                                    <p className="text-gray-400 mb-3">Show up, win big! No mail, no exceptions. Your moment in the spotlight awaits.</p>
+                                    <p className="text-gray-400"><strong className="text-white">Team projects</strong> — prize goes to the project leader. The prize is awarded to the project leader only. How you share it with your team is entirely up to you — organisers do not decide, influence, or get involved in prize splitting. Your team, your call.</p>
+                                </div>
+
+                                {/* Your Data */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-3">Your Data</h3>
+                                    <p className="text-gray-400">Your submission data is stored for <strong className="text-white">30 days</strong> after the event and is <strong className="text-white">not shared</strong> outside the competition. We keep it simple: your info stays in-house for judging and event purposes only.</p>
+                                </div>
+
+                                {/* Submission Deadline */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-3">Submission Deadline</h3>
+                                    <p className="text-IWDMagenta font-bold text-lg">Friday, 13 March 2026 — 23:59</p>
                                 </div>
                             </div>
                         </div>
@@ -287,7 +334,7 @@ const Hackathon = () => {
 
                         <div className="grid md:grid-cols-2 gap-8">
                             {/* Create Team */}
-                            <div className="bg-gradient-to-br from-IWDPurple/30 to-IWDDeepPurple/30 rounded-2xl p-8 border border-IWDPurple/50">
+                            <a href={HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-br from-IWDPurple/30 to-IWDDeepPurple/30 rounded-2xl p-8 border border-IWDPurple/50 hover:border-IWDMagenta transition-all">
                                 <div className="text-center">
                                     <div className="w-20 h-20 bg-IWDPurple/30 rounded-full flex items-center justify-center mx-auto mb-6">
                                         <FaRocket className="text-4xl text-IWDMagenta" />
@@ -296,14 +343,14 @@ const Hackathon = () => {
                                     <p className="text-gray-400 mb-6">
                                         Have an idea? Start a team and recruit talented developers, designers, and innovators to bring it to life.
                                     </p>
-                                    <span className="inline-flex items-center gap-2 bg-IWDPurple/50 text-gray-400 px-6 py-3 rounded-xl font-semibold cursor-not-allowed">
-                                        Create Team — Opens 11th March
+                                    <span className="inline-flex items-center gap-2 bg-IWDPurple text-white px-6 py-3 rounded-xl font-semibold hover:bg-IWDMagenta transition-colors">
+                                        Create Team →
                                     </span>
                                 </div>
-                            </div>
+                            </a>
 
                             {/* Join Team */}
-                            <div className="bg-gradient-to-br from-IWDMagenta/20 to-IWDPink/10 rounded-2xl p-8 border border-IWDMagenta/50">
+                            <a href={HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-br from-IWDMagenta/20 to-IWDPink/10 rounded-2xl p-8 border border-IWDMagenta/50 hover:border-IWDPink transition-all">
                                 <div className="text-center">
                                     <div className="w-20 h-20 bg-IWDMagenta/30 rounded-full flex items-center justify-center mx-auto mb-6">
                                         <FaUsers className="text-4xl text-IWDPink" />
@@ -312,11 +359,11 @@ const Hackathon = () => {
                                     <p className="text-gray-400 mb-6">
                                         Looking to contribute? Browse existing teams looking for members with your skills and expertise.
                                     </p>
-                                    <span className="inline-flex items-center gap-2 bg-IWDMagenta/50 text-gray-400 px-6 py-3 rounded-xl font-semibold cursor-not-allowed">
-                                        Find Teams — Opens 11th March
+                                    <span className="inline-flex items-center gap-2 bg-IWDMagenta text-white px-6 py-3 rounded-xl font-semibold hover:bg-IWDPink transition-colors">
+                                        Find Teams →
                                     </span>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         {/* Team Tips */}
