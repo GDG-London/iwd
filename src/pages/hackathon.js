@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaRocket, FaUsers, FaCode, FaBrain, FaVideo, FaPalette, FaTicketAlt, FaTrophy } from 'react-icons/fa';
+import { FaRocket, FaUsers, FaCode, FaBrain, FaVideo, FaPalette, FaTicketAlt, FaTrophy, FaDiscord } from 'react-icons/fa';
 import PrizeCarousel from '../components/prize-carousel';
 
 const HACKATHON_URL = process.env.REACT_APP_HACKATHON_URL || 'https://gdg-london-hackathon.vercel.app/hackathon';
 const TICKET_URL = process.env.REACT_APP_REGISTRATION_URL || 'https://buildwithai.gdg.london';
+const DISCORD_URL = 'https://discord.com/invite/QujDVuNJ';
 
 const Hackathon = () => {
     const [activeTab, setActiveTab] = useState('overview');
@@ -70,6 +71,14 @@ const Hackathon = () => {
                             >
                                 <FaTrophy /> View Prizes
                             </Link>
+                            <a
+                                href={DISCORD_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-[#5865F2] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#4752C4] transition-all"
+                            >
+                                <FaDiscord /> Join Discord
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -122,6 +131,15 @@ const Hackathon = () => {
                             <div>
                                 <h3 className="text-white font-bold mb-1">Event Ticket Required</h3>
                                 <p className="text-gray-400">You need a valid ticket for the event to participate in this hackathon. <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" className="text-IWDMagenta hover:text-IWDPink font-semibold">Get your ticket at buildwithai.gdg.london →</a></p>
+                            </div>
+                        </div>
+
+                        {/* Discord Community */}
+                        <div className="bg-[#5865F2]/10 border border-[#5865F2]/30 rounded-2xl p-6 flex items-center gap-4">
+                            <FaDiscord className="text-3xl text-[#5865F2] flex-shrink-0" />
+                            <div>
+                                <h3 className="text-white font-bold mb-1">Join Our Discord Community</h3>
+                                <p className="text-gray-400">Have questions? Need help with Google credits? Want to discuss the hackathon or the adventure? Join our Discord for Q&A and community discussions. <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="text-[#5865F2] hover:text-IWDPink font-semibold">Join Discord →</a></p>
                             </div>
                         </div>
 
@@ -420,6 +438,14 @@ const Hackathon = () => {
                             className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm transition-all"
                         >
                             Hackathon Resources
+                        </a>
+                        <a 
+                            href={DISCORD_URL} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="bg-[#5865F2]/30 hover:bg-[#5865F2]/50 text-white px-4 py-2 rounded-lg text-sm transition-all flex items-center gap-2"
+                        >
+                            <FaDiscord /> Discord Community
                         </a>
                     </div>
                 </div>
