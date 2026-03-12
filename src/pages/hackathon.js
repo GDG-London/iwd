@@ -6,6 +6,8 @@ import PrizeCarousel from '../components/prize-carousel';
 const HACKATHON_URL = process.env.REACT_APP_HACKATHON_URL || 'https://gdg-london-hackathon.vercel.app/hackathon';
 const TICKET_URL = process.env.REACT_APP_REGISTRATION_URL || 'https://buildwithai.gdg.london';
 const DISCORD_URL = 'https://discord.com/invite/QujDVuNJ';
+const ADVENTURE_URL = 'https://adventure.wietsevenema.eu/e/gdg-london';
+const LEADERBOARD_URL = 'https://adventure.wietsevenema.eu/leaderboards/2c6f858e-98ec-438c-857f-671c5eab3c89';
 
 const Hackathon = () => {
     const [activeTab, setActiveTab] = useState('overview');
@@ -118,11 +120,28 @@ const Hackathon = () => {
                                 <p className="text-gray-400 mb-4">Submit your hackathon project, join a team, or browse the Idea Gallery.</p>
                                 <span className="text-IWDLightPurple text-sm font-semibold">Join now →</span>
                             </a>
-                            <a href={HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-br from-IWDMagenta/20 to-IWDPink/10 rounded-2xl p-8 border border-IWDMagenta/50 hover:border-IWDPink transition-all">
-                                <h3 className="text-xl font-bold text-white mb-3">Garden of Forgotten Prompt</h3>
-                                <p className="text-gray-400 mb-4">Join the leaderboard for this adventure. We&apos;ll provide cloud credits. Create a project so we can send you credits.</p>
-                                <span className="text-IWDLightPurple text-sm font-semibold">Join now →</span>
-                            </a>
+                            <div className="block bg-gradient-to-br from-IWDMagenta/20 to-IWDPink/10 rounded-2xl p-6 border border-IWDMagenta/50 hover:border-IWDPink transition-all">
+                                <div className="flex items-start gap-4">
+                                    <img 
+                                        src="/images/garden-forgotten-prompt.png" 
+                                        alt="The Garden of the Forgotten Prompt" 
+                                        className="w-24 h-24 rounded-lg object-cover flex-shrink-0"
+                                    />
+                                    <div className="flex-1">
+                                        <h3 className="text-xl font-bold text-white mb-2">The Garden of the Forgotten Prompt</h3>
+                                        <p className="text-gray-500 text-sm mb-2">Wed 11 Mar, 11:00pm – Sat 14 Mar, 6:00pm</p>
+                                        <p className="text-gray-400 text-sm mb-3">Join this adventure and compete on the leaderboard. We&apos;ll provide Google Cloud credits — create a project so we can send you credits.</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            <a href={ADVENTURE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 bg-IWDMagenta/30 hover:bg-IWDMagenta/50 text-white px-3 py-1.5 rounded-lg text-sm font-semibold transition-all">
+                                                Start Adventure →
+                                            </a>
+                                            <a href={LEADERBOARD_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-lg text-sm font-semibold transition-all">
+                                                View Leaderboard
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Ticket requirement */}
@@ -249,8 +268,12 @@ const Hackathon = () => {
                                         <li>LinkedIn profile</li>
                                     </ul>
                                     <p className="text-gray-400 mb-3">You can also browse the Idea Gallery and join an existing project.</p>
-                                    <p className="text-gray-400 mb-3">Or join the adventure &quot;Garden of Forgotten Prompt&quot; — we will provide you cloud credits. Create a project so we can send you credits.</p>
-                                    <a href={HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="text-IWDLightPurple hover:text-IWDPink font-semibold">Join now →</a>
+                                    <p className="text-gray-400 mb-3">Or join the adventure &quot;The Garden of the Forgotten Prompt&quot; — we will provide you Google Cloud credits. Create a project so we can send you credits.</p>
+                                    <div className="flex flex-wrap gap-3 mt-4">
+                                        <a href={HACKATHON_URL} target="_blank" rel="noopener noreferrer" className="text-IWDLightPurple hover:text-IWDPink font-semibold">Join Hackathon →</a>
+                                        <a href={ADVENTURE_URL} target="_blank" rel="noopener noreferrer" className="text-IWDMagenta hover:text-IWDPink font-semibold">Start Adventure →</a>
+                                        <a href={LEADERBOARD_URL} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white font-semibold">View Leaderboard →</a>
+                                    </div>
                                 </div>
 
                                 {/* Avoid These Project Types */}
@@ -446,6 +469,22 @@ const Hackathon = () => {
                             className="bg-[#5865F2]/30 hover:bg-[#5865F2]/50 text-white px-4 py-2 rounded-lg text-sm transition-all flex items-center gap-2"
                         >
                             <FaDiscord /> Discord Community
+                        </a>
+                        <a 
+                            href={ADVENTURE_URL} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="bg-IWDMagenta/30 hover:bg-IWDMagenta/50 text-white px-4 py-2 rounded-lg text-sm transition-all"
+                        >
+                            Adventure
+                        </a>
+                        <a 
+                            href={LEADERBOARD_URL} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm transition-all"
+                        >
+                            Leaderboard
                         </a>
                     </div>
                 </div>
