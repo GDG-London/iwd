@@ -317,6 +317,7 @@ const Hackathon = () => {
                                     <h3 className="text-xl font-bold text-white mb-3">Winning Prizes — Important</h3>
                                     <p className="text-gray-400 mb-3">🎉 Prizes are handed out live on event day — be there in person to claim your glory.</p>
                                     <p className="text-gray-400 mb-3">Show up, win big! No mail, no exceptions. Your moment in the spotlight awaits.</p>
+                                    <p className="text-gray-400 mb-3"><strong className="text-white">Adventure workshop raffle</strong> — the top 3 players on the adventure leaderboard will be entered into an additional raffle for prizes.</p>
                                     <p className="text-gray-400"><strong className="text-white">Team projects</strong> — prize goes to the project leader. The prize is awarded to the project leader only. How you share it with your team is entirely up to you — organisers do not decide, influence, or get involved in prize splitting. Your team, your call.</p>
                                 </div>
 
